@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Emblem-matched palette */
+  --color-abyss: #02040a;
+  --color-navy-900: #050b1a;
+  --color-navy-800: #081431;
+  --color-navy-700: #0a1e4a;
+  --color-royal: #0b5fb8;
+  --color-azure: #1d8ff0;
+  --color-cyan-glow: #22d3ee;
+  --color-aqua: #67e8f9;
+  --color-silver: #dbe7f5;
+
+  --animate-float-slow: floaty 12s ease-in-out infinite;
+  --animate-float-mid: floaty 8s ease-in-out infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-spin-rev: spin-rev 26s linear infinite;
+  --animate-shimmer: shimmer 3.2s linear infinite;
+  --animate-pulse-ring: pulse-ring 3s ease-out infinite;
+  --animate-marquee: marquee 26s linear infinite;
+  --animate-glow: glow 4s ease-in-out infinite;
+  --animate-shake: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  --animate-blink: blink 1s step-end infinite;
+  --animate-tilt: tilt 10s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -26px, 0);
+  }
+}
+@keyframes spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -180% 0;
+  }
+  100% {
+    background-position: 180% 0;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  80% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    filter: blur(48px);
+  }
+  50% {
+    opacity: 0.85;
+    filter: blur(64px);
+  }
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-2px);
+  }
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-8px);
+  }
+  40%,
+  60% {
+    transform: translateX(8px);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes tilt {
+  0%,
+  100% {
+    transform: rotate(-1.2deg) scale(1);
+  }
+  50% {
+    transform: rotate(1.2deg) scale(1.02);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    margin: 0;
+    background-color: #02040a;
+    color: #eaf3ff;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #22d3ee;
+    color: #041226;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050b1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1d8ff0, #22d3ee);
+    border-radius: 99px;
+    border: 2px solid #050b1a;
+  }
+}
+
+@utility glass {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(148, 197, 255, 0.18);
+}
+
+@utility glass-strong {
+  background: linear-gradient(
+    145deg,
+    rgba(10, 30, 74, 0.85),
+    rgba(4, 10, 24, 0.8)
+  );
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  border: 1px solid rgba(148, 197, 255, 0.2);
+}
+
+@utility text-gradient {
+  background: linear-gradient(100deg, #ffffff 0%, #9fdcff 45%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(100deg, #ffffff 0%, #cfe8ff 40%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glow-cyan {
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.35),
+    0 10px 40px -10px rgba(34, 211, 238, 0.55),
+    0 0 90px -30px rgba(29, 143, 240, 0.8);
+}
+
+@utility shine {
+  background-image: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.55) 45%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent 75%
+  );
+  background-size: 220% 100%;
+  animation: var(--animate-shimmer);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
