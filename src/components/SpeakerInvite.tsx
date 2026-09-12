@@ -62,7 +62,7 @@ export default function SpeakerInvite({
 
   return (
     <div className="relative">
-      <TopBar onBack={onBack} label="Спикерлер" right={speaker.role} />
+      <TopBar onBack={onBack} label="Шығу" right={speaker.role} />
 
       {/* ---------------- HERO ---------------- */}
       <section
@@ -285,7 +285,7 @@ export default function SpeakerInvite({
               )}
             </GlowButton>
             <GlowButton variant="ghost" onClick={onBack}>
-              Спикерлер тізіміне
+              Шығу
             </GlowButton>
           </div>
           <p className="mt-10 text-[11px] uppercase tracking-[0.2em] text-white/35">

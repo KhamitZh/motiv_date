@@ -15,7 +15,6 @@ import {
   Users2,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import Countdown from "@/components/fx/Countdown";
 import Emblem from "@/components/fx/Emblem";
 import { GlowButton, Reveal, SplitWords, TiltCard } from "@/components/fx/motion-bits";
 import TopBar from "@/components/TopBar";
@@ -141,22 +140,10 @@ export default function StudentInvite({ onBack }: { onBack: () => void }) {
           </p>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="mt-10"
-          >
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-cyan-200/70">
-              Кешке дейін қалды
-            </p>
-            <Countdown iso={EVENT.dateISO} />
-          </motion.div>
-
-          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
+            transition={{ delay: 1.6, duration: 0.8 }}
+            className="mt-11 flex flex-col items-center gap-3 sm:flex-row"
           >
             <GlowButton onClick={accept} disabled={going}>
               {going ? (
@@ -293,13 +280,14 @@ export default function StudentInvite({ onBack }: { onBack: () => void }) {
           <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-cyan-300 via-sky-500/50 to-transparent" />
           {AGENDA.map((a, i) => (
             <Reveal key={a.time} delay={i * 0.08} y={18}>
-              <div className="group relative mb-5 rounded-2xl glass p-5 transition-all duration-400 hover:translate-x-1.5 hover:border-cyan-200/40">
-                <span className="absolute -left-[30px] top-6 h-3.5 w-3.5 rounded-full border-2 border-cyan-300 bg-[#04091A] transition-all duration-500 group-hover:scale-125 group-hover:bg-cyan-300 group-hover:shadow-[0_0_16px_4px_rgba(34,211,238,0.6)]" />
+              <div className="group relative mb-4 rounded-2xl glass px-5 py-4 transition-all duration-400 hover:translate-x-1.5 hover:border-cyan-200/40">
+                <span className="absolute -left-[30px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-cyan-300 bg-[#04091A] transition-all duration-500 group-hover:scale-125 group-hover:bg-cyan-300 group-hover:shadow-[0_0_16px_4px_rgba(34,211,238,0.6)]" />
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                  <span className="font-display text-sm font-bold text-cyan-300">{a.time}</span>
+                  <span className="min-w-[3.4rem] font-display text-sm font-bold text-cyan-300">
+                    {a.time}
+                  </span>
                   <h3 className="font-semibold text-white">{a.title}</h3>
                 </div>
-                <p className="mt-1 text-xs text-white/50">{a.who}</p>
               </div>
             </Reveal>
           ))}
@@ -334,8 +322,7 @@ export default function StudentInvite({ onBack }: { onBack: () => void }) {
             Сені сол кеште күтеміз! 💙
           </h3>
           <p className="mx-auto mt-3 max-w-md text-sm text-white/60">
-            Орын саны шектеулі. Қатысуыңды растап, {EVENT.dateLabel} күні {STUDENT.time}-де{" "}
-            {EVENT.place} платформасына қосыл.
+            {EVENT.dateLabel} күні {STUDENT.time}-де {EVENT.place} платформасына қосыл.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <GlowButton onClick={accept} disabled={going}>
